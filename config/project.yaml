@@ -1,0 +1,65 @@
+# ===================================================================
+# PROJECT CONFIGURATION
+# ===================================================================
+# General project settings and metadata
+# ===================================================================
+
+project:
+  name: "Toldo Abanico - Parametric CAD"
+  description: "Parametric CAD design for folding awning structure for Chevrolet S10"
+  version: "0.1.0"
+  date_created: "2026-10-01"
+
+# -------------------------------------------------------------------
+# COORDINATE SYSTEM
+# -------------------------------------------------------------------
+# This defines the global coordinate system for all CAD models
+# See docs/coordinate-system.md for detailed documentation
+
+coordinate_system:
+  convention: "right_handed"
+  x_axis: "longitudinal"      # Along vehicle length
+  y_axis: "lateral"           # Across vehicle width
+  z_axis: "vertical"          # Height
+  origin: "point_A"           # Origin at primary structural point A
+  units: "mm"
+
+# -------------------------------------------------------------------
+# EXPORT SETTINGS
+# -------------------------------------------------------------------
+exports:
+  step:
+    enabled: true
+    output_dir: "exports/step"
+
+  stl:
+    enabled: true
+    output_dir: "exports/stl"
+    linear_deflection: 0.1     # Controls mesh quality
+    angular_deflection: 0.1    # Controls mesh quality
+
+  dxf:
+    enabled: true
+    output_dir: "exports/dxf"
+
+  svg:
+    enabled: false
+    output_dir: "exports/svg"
+
+# -------------------------------------------------------------------
+# VALIDATION SETTINGS
+# -------------------------------------------------------------------
+validation:
+  enabled: true
+  tolerance: 0.01              # Geometric tolerance for validations
+  check_geometry: true
+  check_dimensions: true
+  check_materials: false       # Not yet implemented
+
+# -------------------------------------------------------------------
+# VISUALIZATION SETTINGS
+# -------------------------------------------------------------------
+visualization:
+  show_coordinate_axes: true
+  show_points: true
+  show_dimensions: false       # Not yet implemented

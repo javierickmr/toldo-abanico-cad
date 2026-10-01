@@ -1,0 +1,78 @@
+# ===================================================================
+# MATERIAL PROPERTIES FOR STRUCTURAL ANALYSIS
+# ===================================================================
+# This file contains material property data for structural calculations.
+# DO NOT use these for final structural validation without engineering review.
+# ===================================================================
+
+materials:
+  # -------------------------------------------------------------------
+  # STEEL MATERIALS
+  # -------------------------------------------------------------------
+  steel_a36:
+    name: "ASTM A36 Structural Steel"
+    density: 7850              # kg/m³
+    elastic_modulus: 200000    # MPa (N/mm²)
+    poisson_ratio: 0.26
+    yield_strength: 250        # MPa
+    ultimate_strength: 400     # MPa
+    status: ASSUMPTION
+    note: "Common structural steel - properties are nominal"
+
+  steel_1020:
+    name: "AISI 1020 Carbon Steel"
+    density: 7870              # kg/m³
+    elastic_modulus: 205000    # MPa
+    poisson_ratio: 0.29
+    yield_strength: 350        # MPa
+    ultimate_strength: 420     # MPa
+    status: ASSUMPTION
+    note: "Common carbon steel for tubing"
+
+  # -------------------------------------------------------------------
+  # ALUMINUM MATERIALS
+  # -------------------------------------------------------------------
+  aluminum_6061_t6:
+    name: "Aluminum 6061-T6"
+    density: 2700              # kg/m³
+    elastic_modulus: 68900     # MPa
+    poisson_ratio: 0.33
+    yield_strength: 276        # MPa
+    ultimate_strength: 310     # MPa
+    status: ASSUMPTION
+    note: "Common aluminum alloy - good strength to weight ratio"
+
+  aluminum_6063_t5:
+    name: "Aluminum 6063-T5"
+    density: 2700              # kg/m³
+    elastic_modulus: 68900     # MPa
+    poisson_ratio: 0.33
+    yield_strength: 145        # MPa
+    ultimate_strength: 186     # MPa
+    status: ASSUMPTION
+    note: "Common for extrusions - lower strength than 6061"
+
+# -------------------------------------------------------------------
+# MATERIAL SELECTION
+# -------------------------------------------------------------------
+# This section maps component types to materials
+# All selections are ASSUMPTION until confirmed
+
+selected_materials:
+  main_frame: null          # TBD - select from materials above
+  secondary_frame: null     # TBD
+  ribs: null                # TBD
+  brackets: null            # TBD
+  pivots: null              # TBD
+  fasteners: null           # TBD
+
+# -------------------------------------------------------------------
+# SAFETY FACTORS
+# -------------------------------------------------------------------
+# These are ASSUMPTIONS and must be reviewed by engineer
+
+safety_factors:
+  static_load: 3.0          # ASSUMPTION - factor of safety for static loads
+  dynamic_load: 5.0         # ASSUMPTION - factor for dynamic/impact loads
+  fatigue: 2.0              # ASSUMPTION - factor for cyclic loading
+  note: "All safety factors are preliminary assumptions"

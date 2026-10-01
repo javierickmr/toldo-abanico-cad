@@ -1,0 +1,126 @@
+# ===================================================================
+# PARAMETRIC DIMENSIONS FOR AWNING CAD MODEL
+# ===================================================================
+# This file contains all dimensional parameters for the awning design.
+# Units: millimeters (mm) unless otherwise specified
+# Data status: KNOWN, CALCULATED, ASSUMPTION, TBD
+# ===================================================================
+
+units: mm
+
+# -------------------------------------------------------------------
+# VEHICLE DATA - Chevrolet S10
+# -------------------------------------------------------------------
+vehicle:
+  model: "Chevrolet S10"
+  length: 5365            # KNOWN - total vehicle length
+  width: 1856             # ASSUMPTION - typical S10 width
+  height: 1828            # KNOWN - vehicle height
+  bed_length: 1567        # ASSUMPTION - typical S10 bed length
+
+# -------------------------------------------------------------------
+# PRIMARY STRUCTURAL POINTS
+# -------------------------------------------------------------------
+# These define the key structural locations of the awning
+# Points A, B, C are KNOWN from initial specifications
+# Points D, E, F, G, H are TBD pending detailed design
+
+structural_points:
+  # Point A: Primary anchor point (origin)
+  A_to_B: 2600           # KNOWN - horizontal distance
+  A_to_C: 2600           # KNOWN - distance to forward support
+
+  # Point coordinates will be calculated in code based on:
+  # - Vehicle mounting position
+  # - Coordinate system definition
+  # - Assembly geometry
+
+# -------------------------------------------------------------------
+# AWNING GEOMETRY
+# -------------------------------------------------------------------
+awning:
+  # Primary dimensions
+  span_AB: 2600          # KNOWN - lateral span
+  span_AC: 2600          # KNOWN - longitudinal span
+
+  # Extension characteristics
+  max_extension: null    # TBD - maximum deployed extension
+  min_extension: null    # TBD - minimum retracted size
+  extension_angle: null  # TBD - deployment angle from vertical
+
+  # Number of ribs/segments
+  num_ribs: null         # TBD - number of folding ribs
+  rib_spacing: null      # TBD - spacing between ribs
+
+# -------------------------------------------------------------------
+# TUBE SPECIFICATIONS
+# -------------------------------------------------------------------
+# Structural tubes for frame construction
+# Material: TBD (likely steel or aluminum)
+
+tubes:
+  main_frame:
+    outer_diameter: null      # TBD - main structural tube OD
+    wall_thickness: null      # TBD - tube wall thickness
+    material: null            # TBD - material specification
+
+  secondary_frame:
+    outer_diameter: null      # TBD - secondary tube OD
+    wall_thickness: null      # TBD - tube wall thickness
+    material: null            # TBD - material specification
+
+  ribs:
+    outer_diameter: null      # TBD - rib tube OD
+    wall_thickness: null      # TBD - tube wall thickness
+    material: null            # TBD - material specification
+
+# -------------------------------------------------------------------
+# PIVOT/JOINT SPECIFICATIONS
+# -------------------------------------------------------------------
+pivots:
+  main_pivot:
+    diameter: null           # TBD - pivot pin diameter
+    material: null           # TBD - material specification
+    type: null               # TBD - bearing type (bushing, ball bearing, etc)
+
+  secondary_pivot:
+    diameter: null           # TBD - secondary pivot diameter
+    material: null           # TBD - material specification
+
+# -------------------------------------------------------------------
+# BRACKET/MOUNTING SPECIFICATIONS
+# -------------------------------------------------------------------
+brackets:
+  vehicle_mount:
+    thickness: null          # TBD - mounting bracket thickness
+    width: null              # TBD - bracket width
+    bolt_diameter: null      # TBD - mounting bolt size
+    num_bolts: null          # TBD - number of mounting bolts
+    material: null           # TBD - material specification
+
+# -------------------------------------------------------------------
+# CANVAS/FABRIC SPECIFICATIONS
+# -------------------------------------------------------------------
+canvas:
+  material: null             # TBD - fabric type
+  thickness: null            # TBD - fabric thickness
+  coverage_area: null        # TBD - total fabric area
+  attachment_method: null    # TBD - how fabric attaches to frame
+
+# -------------------------------------------------------------------
+# TOLERANCES
+# -------------------------------------------------------------------
+tolerances:
+  default: 0.1             # ASSUMPTION - default tolerance in mm
+  tight: 0.05              # ASSUMPTION - tight tolerance in mm
+  loose: 0.5               # ASSUMPTION - loose tolerance in mm
+
+# -------------------------------------------------------------------
+# VALIDATION LIMITS
+# -------------------------------------------------------------------
+# These are used for automated validation
+validation:
+  min_tube_diameter: 10    # ASSUMPTION - minimum reasonable tube diameter
+  max_tube_diameter: 100   # ASSUMPTION - maximum reasonable tube diameter
+  min_wall_thickness: 1    # ASSUMPTION - minimum wall thickness
+  max_wall_thickness: 10   # ASSUMPTION - maximum wall thickness

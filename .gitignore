@@ -1,0 +1,76 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# FreeCAD
+*.FCStd1
+*.FCStd#
+*.autosave
+*.FCBak
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+tmpclaude-*
+
+# CAD Exports (generated files - can be regenerated)
+# Comment out to version control official releases
+exports/step/*.step
+exports/stl/*.stl
+exports/dxf/*.dxf
+exports/svg/*.svg
+
+# Models (generated)
+models/*.step
+models/*.stl
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# OS files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Project specific
+nul
