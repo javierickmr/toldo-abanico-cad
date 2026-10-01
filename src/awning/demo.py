@@ -16,9 +16,20 @@ All dimensions are parametric and sourced from configuration.
 
 import cadquery as cq
 from pathlib import Path
-from .parameters import Parameters
-from .validation import validate_positive, validate_volume
-from .exporters import export_step, export_stl, export_dxf
+import sys
+
+# Allow running as script or module
+if __name__ == "__main__" and __package__ is None:
+    # Add parent directory to path for direct execution
+    sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+    from src.awning.parameters import Parameters
+    from src.awning.validation import validate_positive, validate_volume
+    from src.awning.exporters import export_step, export_stl, export_dxf
+else:
+    # Relative imports for module usage
+    from .parameters import Parameters
+    from .validation import validate_positive, validate_volume
+    from .exporters import export_step, export_stl, export_dxf
 
 
 # Demo parameters (since main dimensions are TBD)
@@ -217,7 +228,7 @@ def main():
     # Create assembly
     print("\n[1/4] Creating demo assembly...")
     assembly = create_demo_assembly()
-    print("      ✓ Assembly created")
+    print("      [OK] Assembly created")
 
     # Get individual shape for STL/DXF export
     # Combine all shapes into one
@@ -225,25 +236,25 @@ def main():
     tube = create_rectangular_tube(**DEMO_PARAMS['tube'])
     plate = create_mounting_plate(**DEMO_PARAMS['plate'])
     combined_shape = tube  # For simplicity, just use tube
-    print("      ✓ Shapes combined")
+    print("      [OK] Shapes combined")
 
     # Export STEP
     print("\n[3/4] Exporting to STEP format...")
     step_path = export_step(assembly, "exports/step/demo.step")
-    print(f"      ✓ STEP exported: {step_path}")
+    print(f"      [OK] STEP exported: {step_path}")
 
     # Export STL
     print("      Exporting to STL format...")
     stl_path = export_stl(combined_shape, "exports/stl/demo.stl")
-    print(f"      ✓ STL exported: {stl_path}")
+    print(f"      [OK] STL exported: {stl_path}")
 
     # Export DXF
     print("      Exporting to DXF format...")
     try:
         dxf_path = export_dxf(combined_shape, "exports/dxf/demo.dxf")
-        print(f"      ✓ DXF exported: {dxf_path}")
+        print(f"      [OK] DXF exported: {dxf_path}")
     except Exception as e:
-        print(f"      ⚠ DXF export failed: {e}")
+        print(f"      [WARNING] DXF export failed: {e}")
 
     # Validate volumes
     print("\n[4/4] Validating geometry...")
@@ -265,7 +276,7 @@ def main():
 
     # Validate with tolerance
     validate_volume(actual_tube_vol, expected_tube_vol, tolerance=0.01, name="Tube volume")
-    print("      ✓ Volume validation passed")
+    print("      [OK] Volume validation passed")
 
     print("\n" + "=" * 60)
     print("DEMO GENERATION COMPLETE")
